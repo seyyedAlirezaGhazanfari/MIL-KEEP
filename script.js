@@ -72,14 +72,24 @@ function addNote(title, body, color, id) {
     postArchive(title, body, color, id);
     archiveNote(id);
   });
+  var removeButton = document.createElement("button")
+  removeButton.addEventListener("click",(e)=>{
+    deleteNote(id)
+  })
+  var removeIcon = document.createElement("i")
   var archiveIcon = document.createElement("i");
+  removeButton.className = "iconButton"
   archiveButton.className = "iconButton";
+  removeIcon.className = "material-icons"
   archiveIcon.className = "material-icons";
+  var removeText = document.createTextNode("delete")
   var archiveText = document.createTextNode("archive");
+  removeIcon.appendChild(removeText)
+  removeButton.appendChild(removeIcon)
   archiveIcon.appendChild(archiveText);
   archiveButton.appendChild(archiveIcon);
   noteFooter.appendChild(archiveButton);
-
+  noteFooter.appendChild(removeButton)
   noteCard.appendChild(noteTitle);
   noteCard.appendChild(noteBody);
   noteCard.appendChild(noteFooter);
@@ -99,6 +109,14 @@ colorPickerButton.addEventListener("click", (e) => {
 
 var noteTitleInput = document.getElementById("noteTitleInput");
 var noteBodyInput = document.getElementById("noteBodyInput");
+
+function deleteNote(id){
+  fetch(`http://localhost:3000/notes/${id}`,{
+    method:"DELETE"
+  }).then((resposne)=>console.log("success"))
+  .catch((err)=>console.log("error"))
+}
+
 
 function submitForm(e) {
   e.preventDefault();
