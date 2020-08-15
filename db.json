@@ -7,13 +7,26 @@
       "id": 1
     },
     {
+      "title": "ttt",
+      "text": "ttt",
+      "color": "#ff4300ff",
+      "id": 2
+    },
+    {
+      "title": "asdasd",
+      "text": "asdasd",
+      "color": "#8000ffff",
+      "id": 3
+    }
+  ],
+  "archive": [
+    {
       "title": "",
       "text": "",
       "color": null,
-      "id": 2
+      "id": 1
     }
   ],
-  "archive": [],
   "Bin": [
     {
       "id": 1,

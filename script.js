@@ -22,21 +22,29 @@ var archiveSidebarItem = sidebarItems[1];
 var binSidebarItem = sidebarItems[2]
 
 binSidebarItem.addEventListener('click' , (e)=>{
+  e.preventDefault()
+
   binSidebarItem.classList.add('active')
   archiveSidebarItem.classList.remove('active')
   notesSidebarItem.classList.remove('active')
+ document.getElementsByClassName('noteForm')[0].style.display = 'none'
+
   getBinNotes()
 })
 
 notesSidebarItem.addEventListener('click', (e) => {
+  e.preventDefault()
   notesSidebarItem.classList.add('active')
   archiveSidebarItem.classList.remove('active')
   binSidebarItem.classList.remove('active')
+  document.getElementsByClassName('noteForm')[0].style.display = 'block'
 
   getNotes()
 })
 
 archiveSidebarItem.addEventListener('click', (e) => {
+  e.preventDefault()
+
   archiveSidebarItem.classList.add('active')
   notesSidebarItem.classList.remove('active')
   binSidebarItem.classList.remove('active')
@@ -205,7 +213,6 @@ function postArchive(noteTitle, noteBody, color, id) {
   xhttp.open("POST", "http://localhost:3000/archive", true);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   var data = {
-    id: id,
     title: noteTitle,
     text: noteBody,
     color: color,
