@@ -1,18 +1,49 @@
 {
   "notes": [
     {
-      "title": "sad",
-      "text": "asd",
+      "title": "",
+      "text": "",
       "color": null,
       "id": 1
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 2
     }
   ],
-  "archive": [
+  "archive": [],
+  "Bin": [
     {
       "id": 1,
-      "title": "asd",
-      "text": "asd",
+      "title": "sad",
+      "text": "sad",
       "color": null
+    },
+    {
+      "id": 3,
+      "title": "asdsaf",
+      "text": "asfsaf",
+      "color": null
+    },
+    {
+      "title": "asfasf",
+      "text": "asfsaf",
+      "color": null,
+      "id": 4
+    },
+    {
+      "title": "dsf",
+      "text": "f",
+      "color": null,
+      "id": 5
+    },
+    {
+      "title": "work1",
+      "text": "playing soccer",
+      "color": "#ffe000ff",
+      "id": 6
     }
   ]
 }

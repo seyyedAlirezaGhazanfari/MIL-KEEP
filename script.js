@@ -19,17 +19,27 @@ for (let i = 0; i < sidebarItems.length; i++) {
 
 var notesSidebarItem = sidebarItems[0];
 var archiveSidebarItem = sidebarItems[1];
+var binSidebarItem = sidebarItems[2]
 
+binSidebarItem.addEventListener('click' , (e)=>{
+  binSidebarItem.classList.add('active')
+  archiveSidebarItem.classList.remove('active')
+  notesSidebarItem.classList.remove('active')
+  getBinNotes()
+})
 
 notesSidebarItem.addEventListener('click', (e) => {
   notesSidebarItem.classList.add('active')
   archiveSidebarItem.classList.remove('active')
+  binSidebarItem.classList.remove('active')
+
   getNotes()
 })
 
 archiveSidebarItem.addEventListener('click', (e) => {
   archiveSidebarItem.classList.add('active')
   notesSidebarItem.classList.remove('active')
+  binSidebarItem.classList.remove('active')
   document.getElementsByClassName('noteForm')[0].style.display = 'none'
   getArchive()
 })
@@ -74,7 +84,8 @@ function addNote(title, body, color, id) {
   });
   var removeButton = document.createElement("button")
   removeButton.addEventListener("click",(e)=>{
-    deleteNote(id)
+    deleteNoteFromNotes(id)
+    postDeletedNoteToBIN(title, body, color, id)
   })
   var removeIcon = document.createElement("i")
   var archiveIcon = document.createElement("i");
@@ -110,11 +121,23 @@ colorPickerButton.addEventListener("click", (e) => {
 var noteTitleInput = document.getElementById("noteTitleInput");
 var noteBodyInput = document.getElementById("noteBodyInput");
 
-function deleteNote(id){
+function deleteNoteFromNotes(id){
   fetch(`http://localhost:3000/notes/${id}`,{
     method:"DELETE"
   }).then((resposne)=>console.log("success"))
   .catch((err)=>console.log("error"))
+}
+function postDeletedNoteToBIN(titlen, bodyn, color, idn){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "http://localhost:3000/Bin", true);
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  var data = {
+    
+    title: titlen,
+    text: bodyn,
+    color: color,
+  };
+  xhttp.send(JSON.stringify(data));
 }
 
 
@@ -138,6 +161,18 @@ function showNotes() {
 
 var noteFormSubmitButton = document.querySelector("input[type=submit]");
 noteFormSubmitButton.addEventListener("click", submitForm);
+
+function getBinNotes(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      notesToShow = JSON.parse(xhttp.responseText);
+      showNotes()
+    }
+  };
+  xhttp.open("GET", "http://localhost:3000/Bin", true);
+  xhttp.send();
+}
 
 function getNotes() {
   var xhttp = new XMLHttpRequest();
