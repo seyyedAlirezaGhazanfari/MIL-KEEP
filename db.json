@@ -3,14 +3,14 @@
     {
       "title": "a",
       "text": "a",
-      "color": "#26a3c2ff",
+      "color": "#053813ff",
       "pinned": true,
       "id": 1
     },
     {
       "title": "d",
       "text": "d",
-      "color": "#d0daddff",
+      "color": null,
       "pinned": true,
       "id": 2
     }

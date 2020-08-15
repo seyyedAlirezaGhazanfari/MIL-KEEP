@@ -110,6 +110,28 @@ function addNote(title, body, color, id,pinned) {
      postPinned(id,pinChanger,color,title,body)
   })
 
+  var paletteButton = document.createElement("button")
+  paletteButton.addEventListener("click",(e)=>{
+    e.preventDefault();
+    var resultColor = null
+    var picker = new Picker(paletteButton);
+   picker.onDone = function (color) {
+     e.preventDefault()
+    resultColor = color.hex;
+    postChangeColor(id,body,title,pinned,resultColor)
+
+  };
+  })
+
+
+
+  var paletteIcon = document.createElement("i")
+  var paletteText = document.createTextNode("palette")
+  paletteIcon.appendChild(paletteText)
+  paletteButton.appendChild(paletteIcon)
+  noteFooter.appendChild(paletteButton)
+
+
   var archiveButton = document.createElement("button");
   archiveButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -125,8 +147,10 @@ function addNote(title, body, color, id,pinned) {
   var archiveIcon = document.createElement("i");
   removeButton.className = "iconButton"
   archiveButton.className = "iconButton";
+  paletteButton.className = "iconButton"
   removeIcon.className = "material-icons"
   archiveIcon.className = "material-icons";
+  paletteIcon.className = "material-icons"
   var removeText = document.createTextNode("delete")
   var archiveText = document.createTextNode("archive");
  
