@@ -6,3 +6,7 @@ noteBodyInput.addEventListener("focus", () => {
   noteFormFooter.style.display = "flex";
   noteBodyInput.focus();
 });
+noteBodyInput.addEventListener("focusout",()=>{
+  noteTitleInput.style.display = "none"
+  noteFormFooter.style.display = "none"
+})
