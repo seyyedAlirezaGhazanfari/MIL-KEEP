@@ -57,7 +57,7 @@ var notesToShow = [];
 
 var notesContainer = document.getElementsByClassName("notes")[0];
 
-function addNote(title, body, color, id) {
+function addNote(title, body, color, id,pinned) {
   var noteCard = document.createElement("div");
   noteCard.style.backgroundColor = color;
 
@@ -85,15 +85,41 @@ function addNote(title, body, color, id) {
   pinButton.appendChild(pinIcon);
   noteFooter.appendChild(pinButton);
 
+  var pinnedIcon = document.createElement("i")
+  pinnedIcon.className = "material-icons"
+  var signeText = document.createTextNode("check_circle")
+  pinnedIcon.appendChild(signeText)
+  noteFooter.appendChild(pinnedIcon)
+  if(!pinned){
+  pinnedIcon.style.display = "none"
+  }
+  
+  pinButton.addEventListener("click",(e)=>{
+    e.preventDefault()
+    var pinChanger = true
+    if(pinned==false){
+      pinChanger = true
+    }else{
+        pinChanger = false
+    }
+    if(!pinChanger){
+      pinnedIcon.style.display = "none"
+    }else{
+      pinnedIcon.style.display = "flex"
+    }
+     postPinned(id,pinChanger,color,title,body)
+  })
+
   var archiveButton = document.createElement("button");
   archiveButton.addEventListener("click", (e) => {
-    postArchive(title, body, color, id);
+    e.preventDefault()
+    postArchive(title, body, color, id,pinned);
     archiveNote(id);
   });
   var removeButton = document.createElement("button")
   removeButton.addEventListener("click",(e)=>{
     deleteNoteFromNotes(id)
-    postDeletedNoteToBIN(title, body, color, id)
+    postDeletedNoteToBIN(title, body, color, id,pinned)
   })
   var removeIcon = document.createElement("i")
   var archiveIcon = document.createElement("i");
@@ -103,6 +129,9 @@ function addNote(title, body, color, id) {
   archiveIcon.className = "material-icons";
   var removeText = document.createTextNode("delete")
   var archiveText = document.createTextNode("archive");
+ 
+ 
+ 
   removeIcon.appendChild(removeText)
   removeButton.appendChild(removeIcon)
   archiveIcon.appendChild(archiveText);
@@ -135,7 +164,7 @@ function deleteNoteFromNotes(id){
   }).then((resposne)=>console.log("success"))
   .catch((err)=>console.log("error"))
 }
-function postDeletedNoteToBIN(titlen, bodyn, color, idn){
+function postDeletedNoteToBIN(titlen, bodyn, color, idn,pinned){
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://localhost:3000/Bin", true);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -144,6 +173,7 @@ function postDeletedNoteToBIN(titlen, bodyn, color, idn){
     title: titlen,
     text: bodyn,
     color: color,
+    pinned : pinned
   };
   xhttp.send(JSON.stringify(data));
 }
@@ -152,7 +182,7 @@ function postDeletedNoteToBIN(titlen, bodyn, color, idn){
 function submitForm(e) {
   e.preventDefault();
   if (noteTitleInput.value !== "" || noteBodyInput !== "") {
-    addNote(noteTitleInput.value, noteBodyInput.value, selectedColor);
+    addNote(noteTitleInput.value, noteBodyInput.value, selectedColor,"false");
     postNote(noteTitleInput.value, noteBodyInput.value, selectedColor);
     noteTitleInput.value = "";
     noteBodyInput.value = "";
@@ -163,8 +193,8 @@ function submitForm(e) {
 function showNotes() {
   notesContainer.innerHTML = "";
   notesToShow.forEach((note) =>
-    addNote(note.title, note.text, note.color, note.id)
-  );
+    addNote(note.title, note.text, note.color, note.id,note.pinned)
+  )
 }
 
 var noteFormSubmitButton = document.querySelector("input[type=submit]");
@@ -204,36 +234,20 @@ function postNote(noteTitle, noteBody, color) {
     title: noteTitle,
     text: noteBody,
     color: color,
+    pinned :false
   };
   xhttp.send(JSON.stringify(data));
 }
 
-function postArchive(noteTitle, noteBody, color, id) {
+function postPinned(id,pinned,color,noteTitle,noteBody){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://localhost:3000/archive", true);
+  xhttp.open("PUT", `http://localhost:3000/notes/${id}`, true);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   var data = {
     title: noteTitle,
     text: noteBody,
     color: color,
+    pinned : pinned
   };
   xhttp.send(JSON.stringify(data));
-}
-
-function archiveNote(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("DELETE", `http://localhost:3000/notes/${id}`, true);
-  xhttp.send();
-}
-
-function getArchive() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      notesToShow = JSON.parse(xhttp.responseText);
-      showNotes()
-    }
-  };
-  xhttp.open("GET", "http://localhost:3000/archive", true);
-  xhttp.send();
 }

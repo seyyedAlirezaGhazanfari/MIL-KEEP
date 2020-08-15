@@ -1,62 +1,28 @@
 {
   "notes": [
     {
-      "title": "",
-      "text": "",
-      "color": null,
+      "title": "a",
+      "text": "a",
+      "color": "#26a3c2ff",
+      "pinned": true,
       "id": 1
     },
     {
-      "title": "ttt",
-      "text": "ttt",
-      "color": "#ff4300ff",
+      "title": "d",
+      "text": "d",
+      "color": "#d0daddff",
+      "pinned": true,
       "id": 2
-    },
-    {
-      "title": "asdasd",
-      "text": "asdasd",
-      "color": "#8000ffff",
-      "id": 3
     }
   ],
   "archive": [
     {
-      "title": "",
-      "text": "",
-      "color": null,
+      "title": "a",
+      "text": "a",
+      "color": "#26a3c2ff",
+      "pinned": false,
       "id": 1
     }
   ],
-  "Bin": [
-    {
-      "id": 1,
-      "title": "sad",
-      "text": "sad",
-      "color": null
-    },
-    {
-      "id": 3,
-      "title": "asdsaf",
-      "text": "asfsaf",
-      "color": null
-    },
-    {
-      "title": "asfasf",
-      "text": "asfsaf",
-      "color": null,
-      "id": 4
-    },
-    {
-      "title": "dsf",
-      "text": "f",
-      "color": null,
-      "id": 5
-    },
-    {
-      "title": "work1",
-      "text": "playing soccer",
-      "color": "#ffe000ff",
-      "id": 6
-    }
-  ]
+  "Bin": []
 }
