@@ -60,16 +60,15 @@ var notesContainer = document.getElementsByClassName("notes")[0];
 function addNote(title, body, color, id,pinned) {
   var noteCard = document.createElement("div");
   noteCard.style.backgroundColor = color;
-
   var titleText = document.createTextNode(title);
   var noteTitle = document.createElement("h4");
   noteTitle.appendChild(titleText);
   noteTitle.style.marginTop = 0;
-
   var bodyText = document.createTextNode(body);
   var noteBody = document.createElement("span");
   noteBody.appendChild(bodyText);
 
+ 
   var noteFooter = document.createElement("div");
   noteFooter.style.display = "flex";
   noteFooter.style.flexDirection = "row";
@@ -165,8 +164,24 @@ function addNote(title, body, color, id,pinned) {
   noteCard.appendChild(noteTitle);
   noteCard.appendChild(noteBody);
   noteCard.appendChild(noteFooter);
+  noteFooter.style.display = "none"
 
   notesContainer.insertBefore(noteCard, notesContainer.firstChild);
+
+  noteCard.addEventListener("mouseover",(e)=>{
+    e.preventDefault()
+
+    noteFooter.style.display = "flex"
+  })
+  noteCard.addEventListener("mouseleave",(e)=>{
+    e.preventDefault()
+
+    noteFooter.style.display = "none"
+
+  })
+
+
+
 }
 
 var selectedColor = null;

@@ -4,15 +4,50 @@
       "title": "a",
       "text": "a",
       "color": "#053813ff",
-      "pinned": true,
+      "pinned": false,
       "id": 1
     },
     {
       "title": "d",
       "text": "d",
       "color": null,
-      "pinned": true,
+      "pinned": false,
       "id": 2
+    },
+    {
+      "title": "a",
+      "text": "a",
+      "color": "#a9cc7dff",
+      "pinned": false,
+      "id": 3
+    },
+    {
+      "title": "l",
+      "text": "l",
+      "color": "#e7df2fff",
+      "pinned": false,
+      "id": 4
+    },
+    {
+      "title": "ll",
+      "text": "ll",
+      "color": null,
+      "pinned": false,
+      "id": 5
+    },
+    {
+      "title": "lm",
+      "text": "lm",
+      "color": null,
+      "pinned": false,
+      "id": 6
+    },
+    {
+      "title": "pl",
+      "text": "pl",
+      "color": null,
+      "pinned": false,
+      "id": 7
     }
   ],
   "archive": [

@@ -117,16 +117,22 @@ input[type=submit] {
   outline: none;
 }
 
+
 .notes {
 
+  animation-duration: 3s;
+  animation-name: moveNotes;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto ;
   grid-gap: 10px;
   padding: 10px;
   
+  
 }
 
+
 .notes > div {
+  animation-duration: 3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -138,6 +144,8 @@ input[type=submit] {
   color: #b4c2bc;
   cursor: move;
 }
+
+
 
 .notes > div > span {
   font-size: 14px;
