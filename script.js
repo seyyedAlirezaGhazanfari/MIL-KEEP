@@ -109,6 +109,8 @@ function addNote(title, body, color, id,pinned) {
      postPinned(id,pinChanger,color,title,body)
   })
 
+  
+
   var paletteButton = document.createElement("button")
   paletteButton.addEventListener("click",(e)=>{
     e.preventDefault();

@@ -6,7 +6,9 @@ var active  = document.activeElement
 var fomr = document.getElementById("form")
 noteBodyInput.addEventListener("focus", (e) => {
   noteTitleInput.style.display = "block";
+
   noteFormFooter.style.display = "flex"
+  
 })
 noteTitleInput.addEventListener("focus", (e) => {
   noteTitleInput.style.display = "block";
