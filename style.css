@@ -149,7 +149,9 @@ input[type=submit] {
   animation-delay: 2s;
   
   
+  
 }
+
 @keyframes moveAddedNotes{
   from{margin-right: -10px;}
   to{margin-left: 10px;}
@@ -168,6 +170,10 @@ input[type=submit] {
   padding: 10px;
   color: #b4c2bc;
   cursor: move;
+}
+.notes > div:hover{
+  transform: scale(1.2);
+  transition: 0.5s;
 }
 
 
