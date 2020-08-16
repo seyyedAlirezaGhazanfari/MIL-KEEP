@@ -75,10 +75,15 @@ input[type=submit] {
   border: 2px solid #b4c2bc;
   border-radius: 5px; 
   transition: height 2s ease-in;
+  animation-iteration-count: infinite;
 }
+
+
+
 
 #noteTitleInput, div.formFooter {
   display: none;
+ 
 }
 
 .noteForm > input[type=text] {
@@ -118,22 +123,36 @@ input[type=submit] {
 }
 
 .iconButton:hover{
-  transition: 1.5s;
+  animation-name: zoomOnIcons;
+  animation-duration: 2s;
+  transition: all 1.5s ease-in-out;
+  transform: scale(1.2);
   color: black;
   background-color: silver;
+}
+
+@keyframes zoomOnIcons{
+  from{size: 0%;}
+  to{size: 200%;}
 }
 
 
 .notes {
 
-  animation-duration: 3s;
-  animation-name: moveNotes;
+  animation-duration: 5s;
+  animation-name: moveAddedNotes;
   display: grid;
   grid-template-columns: auto auto auto ;
   grid-gap: 10px;
   padding: 10px;
+  animation-direction: reverse;
+  animation-delay: 2s;
   
   
+}
+@keyframes moveAddedNotes{
+  from{margin-right: -10px;}
+  to{margin-left: 10px;}
 }
 
 

@@ -43,7 +43,14 @@ function postChangeColor(id,noteBody,noteTitle,pinned,color){
   xhttp.send(JSON.stringify(data));
 }
 
+// function drag(ev){
+//   ev.dataTransfer.setData("noteCard",ev.target)
+// }
 
-
+// function drop(ev) {
+//   ev.preventDefault();
+//   var data = ev.dataTransfer.getData("noteCard");
+//   ev.target.appendChild(document.getElementById(data));
+// }
   
   

@@ -3,8 +3,8 @@
     {
       "title": "a",
       "text": "a",
-      "color": "#053813ff",
-      "pinned": false,
+      "color": "#c45028ff",
+      "pinned": true,
       "id": 1
     },
     {
@@ -22,13 +22,6 @@
       "id": 3
     },
     {
-      "title": "l",
-      "text": "l",
-      "color": "#e7df2fff",
-      "pinned": false,
-      "id": 4
-    },
-    {
       "title": "ll",
       "text": "ll",
       "color": null,
@@ -43,18 +36,18 @@
       "id": 6
     },
     {
-      "title": "a",
-      "text": "a",
-      "color": "#c45028ff",
-      "pinned": false,
-      "id": 8
-    },
-    {
       "title": "asdasd",
       "text": "sad",
       "color": null,
       "pinned": false,
       "id": 9
+    },
+    {
+      "title": "asd",
+      "text": "asd",
+      "color": null,
+      "pinned": false,
+      "id": 10
     }
   ],
   "archive": [
@@ -71,7 +64,29 @@
       "color": null,
       "pinned": false,
       "id": 2
+    },
+    {
+      "title": "work3",
+      "text": "bayad beram madrese",
+      "color": "#5000ffff",
+      "pinned": false,
+      "id": 3
     }
   ],
-  "Bin": []
+  "Bin": [
+    {
+      "title": "a",
+      "text": "a",
+      "color": "#c45028ff",
+      "pinned": false,
+      "id": 1
+    },
+    {
+      "title": "l",
+      "text": "l",
+      "color": "#e7df2fff",
+      "pinned": false,
+      "id": 2
+    }
+  ]
 }

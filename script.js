@@ -59,6 +59,9 @@ var notesContainer = document.getElementsByClassName("notes")[0];
 
 function addNote(title, body, color, id,pinned) {
   var noteCard = document.createElement("div");
+  noteCard.draggable = true
+  // noteCard.ondrop=drop(event)
+  // noteCard.ondrag = drag(event)
   noteCard.style.backgroundColor = color;
   var titleText = document.createTextNode(title);
   var noteTitle = document.createElement("h4");
@@ -103,8 +106,12 @@ function addNote(title, body, color, id,pinned) {
     }
     if(!pinChanger){
       pinnedIcon.style.display = "none"
+      pinnedIcon.style.transition = "all 2s ease 0"
+
     }else{
       pinnedIcon.style.display = "flex"
+      pinnedIcon.style.transition = "all 2s ease 0"
+
     }
      postPinned(id,pinChanger,color,title,body)
   })
@@ -172,12 +179,12 @@ function addNote(title, body, color, id,pinned) {
 
   noteCard.addEventListener("mouseover",(e)=>{
     e.preventDefault()
-
+    noteCard.style.borderColor="#FDFF47"
     noteFooter.style.display = "flex"
   })
   noteCard.addEventListener("mouseleave",(e)=>{
     e.preventDefault()
-
+    noteCard.style.borderColor="#b4c2bc"
     noteFooter.style.display = "none"
 
   })
